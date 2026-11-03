@@ -62,18 +62,46 @@ You can add more tests in `tests/test_recommender.py`.
 
 ## Sample Recommendation Output
 
-Paste a sample of your recommender's output here as a text block so a reader can see what it produces:
-
 ```
-# e.g.:
-# User profile: genre=indie, mood=chill, energy=low
-# Recommendations:
-#   1. ...
-#   2. ...
-#   3. ...
-```
+============================================================
+RECOMMENDATIONS (top 5 per profile)
+============================================================
 
-**Screenshot or video** *(optional)*: <!-- Insert a screenshot or demo video link here -->
+intense_rock  (energy 0.92, valence 0.4, acousticness 0.08)
+  1. Storm Runner           rock       0.963
+  2. Iron Requiem           metal      0.905
+  3. Night Drive Loop       synthwave  0.866
+  4. Gym Hero               pop        0.859
+  5. Concrete Crown         hip hop    0.857
+
+chill_lofi  (energy 0.38, valence 0.58, acousticness 0.8)
+  1. Focus Flow             lofi       0.984
+  2. Library Rain           lofi       0.966
+  3. Midnight Coding        lofi       0.955
+  4. Hollow Pines           folk       0.952
+  5. Coffee Shop Stories    jazz       0.928
+
+happy_pop  (energy 0.8, valence 0.82, acousticness 0.2)
+  1. Sunrise City           pop        0.980
+  2. Fuego en la Noche      latin      0.954
+  3. Rooftop Lights         indie pop  0.943
+  4. Concrete Crown         hip hop    0.902
+  5. Gym Hero               pop        0.893
+
+sad_acoustic  (energy 0.25, valence 0.25, acousticness 0.95)
+  1. Moonlight Reverie      classical  0.969
+  2. Hollow Pines           folk       0.844
+  3. Spacewalk Thoughts     ambient    0.841
+  4. Library Rain           lofi       0.815
+  5. Focus Flow             lofi       0.778
+
+conflicted  (energy 0.85, valence 0.5, acousticness 0.85)
+  1. Crossroads Blues       blues      0.800
+  2. Night Drive Loop       synthwave  0.799
+  3. Storm Runner           rock       0.781
+  4. Midnight Coding        lofi       0.772
+  5. Focus Flow             lofi       0.771
+```
 
 ---
 
