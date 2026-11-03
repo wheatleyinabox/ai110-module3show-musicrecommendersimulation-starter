@@ -32,10 +32,9 @@ def make_small_recommender() -> Recommender:
 
 def test_recommend_returns_songs_sorted_by_score():
     user = UserProfile(
-        favorite_genre="pop",
-        favorite_mood="happy",
-        target_energy=0.8,
-        likes_acoustic=False,
+        target_energy=0.92,
+        target_valence=0.40,
+        target_acousticness=0.08,
     )
     rec = make_small_recommender()
     results = rec.recommend(user, k=2)
@@ -48,10 +47,9 @@ def test_recommend_returns_songs_sorted_by_score():
 
 def test_explain_recommendation_returns_non_empty_string():
     user = UserProfile(
-        favorite_genre="pop",
-        favorite_mood="happy",
-        target_energy=0.8,
-        likes_acoustic=False,
+        target_energy=0.38,
+        target_valence=0.58,
+        target_acousticness=0.80,
     )
     rec = make_small_recommender()
     song = rec.songs[0]
