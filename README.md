@@ -2,9 +2,7 @@
 
 ## Project Summary
 
-In this project you will build and explain a small music recommender system.
-
-Your goal is to:
+Building and explaining a small music recommender system where the goal is to:
 
 - Represent songs and a user "taste profile" as data
 - Design a scoring rule that turns that data into recommendations
@@ -35,6 +33,8 @@ Compared to Spotify's recommender, the streaming platform uses more sophistacate
    python -m venv .venv
    source .venv/bin/activate      # Mac or Linux
    .venv\Scripts\activate         # Windows
+
+   ```
 
 2. Install dependencies
 
@@ -107,38 +107,18 @@ conflicted  (energy 0.85, valence 0.5, acousticness 0.85)
 
 ## Experiments You Tried
 
-Use this section to document the experiments you ran. For example:
-
-- What happened when you changed the weight on genre from 2.0 to 0.5
-- What happened when you added tempo or valence to the score
-- How did your system behave for different types of users
+As an experment, I decided to remove energy from the equation with a Feature Removal test. Given that is has the most weight, I'm curious to see that just valence and acousticness make up for. Interestingly, there were no real surprises to the profiles, except for the conflicted profile once again. Intense Rock contained the same 5 songs with some slight differences. Night Drive Loop moves above Iron Requirem and Gym Hero drops from 4th to 5th. Chill Lofi get a replacement with Coffee Shop Stories falling out and Pulse Cathedral coming into 5th. Happy Pop has the same trend, with Pulse Cathedral coming in and Concrete Clown dropping out. For Sad Acoustic, Crossroad Blues replaces Focus Flow which makes more sense for the category now. Finally conflicted had the most change, where Crossroad Blues, Night Drive Loop, and Storm Runner falling out completely from the top 3. What I can see is that energy is doing much seperating work, valence and acousticness work well by themselves. Instead, it's more of a tie-breaker between songs of close valence and acousticness. And clearly we can see the energy makes the most of the conflicted profile.
 
 ---
 
 ## Limitations and Risks
 
-Summarize some limitations of your recommender.
-
-Examples:
-
-- It only works on a tiny catalog
-- It does not understand lyrics or language
-- It might over favor one genre or mood
-
-You will go deeper on this in your model card.
+In terms of filter bubbles and underrepresentation, a big limitation is that there's no representation. Genre and mood are both out of the picture. "Rock" is only a point in energy/valence/acousticness space. which is reflected in there being synthwave, pop, and hiphop in what's supposed to be just rock music. The song list themselves have too many genres with a thin song population, where there's 15 genres with only 1 song. Users who want some more dark song options won't get it in this dataset, only two songs have a valence below 4% with the highest average being 90%. That being said, if we used more of the features that came with a Song, things could even out. User preferences could be more specific and interactive, where there could be dislikes or skip behaviors. Energy and acousticness are basically the same thing. Loud songs are almost always not acoustic, so the system counts one preference twice. It gives that one preference 65% of the score. Each user is only one point. If someone likes both workout music and sleep music, the system picks something in the middle that fits neither. Also everyone gets the same weights. Some people care more about mood than energy, but the system can’t adjust for that. Scoring tends to favor users with middle-of-the-road tastes and those who match the dataset's patterns. There's lots of rock and lofi but energetic acoustic isn't something in the set.
 
 ---
 
 ## Reflection
 
-Read and complete `model_card.md`:
-
 [**Model Card**](model_card.md)
 
-Write 1 to 2 paragraphs here about what you learned:
-
-- about how recommenders turn data into predictions
-- about where bias or unfairness could show up in systems like this
-
-
-
+The biggest learning point for me would be the actual nature of music recommendation in the real world. Learning about it conceptually and then getting to make it in a small scale really helped me understand the technical setup, even if it's just a glimpse. In my brain, I thought valence and energy were a lot more seperated than they ended up being. I imagined it could measure mood and energy, but clearly this was something the needs more attributes to balance the scales, much like actual Spotify. Ai definitely helped in keeping my head straight with so many parts moving around during implementation and a sort of data expert for me to consult and see what my results were telling me. If I had more time, I would love to implement a more nusanced system including all features and some more weight changes to make everything work as accurately as possible over a broad range of users.
